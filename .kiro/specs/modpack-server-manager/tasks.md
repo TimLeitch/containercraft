@@ -6,7 +6,7 @@
   - Write model validation and relationship definitions
   - _Requirements: 4.3, 5.3, 8.3_
 
-- [ ] 2. Implement CurseForge API integration service
+- [-] 2. Implement CurseForge API integration service
   - Create ModpackService class with async HTTP client for CurseForge API
   - Implement modpack search, details, and version retrieval methods
   - Add response caching and rate limiting logic
