@@ -1,0 +1,23 @@
+{
+  "enabled": true,
+  "name": "Commit Helper",
+  "description": "Monitors file changes and generates commit messages while reminding you to commit your work",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "backend/**/*.py",
+      "frontend/**/*.jsx",
+      "frontend/**/*.js",
+      "frontend/**/*.json",
+      "*.md",
+      "*.yml",
+      "*.yaml",
+      "docker-compose.yml"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Files have been modified in this ContainerCraft project. Please:\n\n1. Analyze the changes made to the files and generate an appropriate git commit message following the project's conventions (feat:, fix:, refactor:, docs:, etc.)\n2. Suggest the specific git commands to stage and commit these changes\n3. Remind the user about the importance of committing frequently to avoid conflicts in this multi-developer environment\n4. If appropriate, suggest whether this should be committed to a feature branch or if they should create one\n\nConsider the project context: This is a Minecraft modpack server management application with React frontend and FastAPI backend. The team follows a feature branch workflow (main → dev → feature/*) and prefers frequent commits."
+  }
+}
