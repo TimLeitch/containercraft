@@ -1,0 +1,21 @@
+{
+  "enabled": true,
+  "name": "README Sync Monitor",
+  "description": "Monitors changes to project files and ensures the README.md is kept up-to-date with current project structure, features, and documentation",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "README.md",
+      "package.json",
+      "requirements.txt",
+      "docker-compose.yml",
+      "frontend/package.json",
+      "backend/requirements.txt"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "The project files have been modified. Please review the current README.md and update it to reflect any changes in project structure, dependencies, setup instructions, or features. Ensure the README accurately represents the current state of the ContainerCraft project including frontend/backend setup, Docker configuration, and development workflow."
+  }
+}

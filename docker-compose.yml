@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - VITE_API_URL=http://localhost:8000
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=sqlite:///./containercraft.db
+    volumes:
+      - ./backend:/app
+      - ./configs:/app/configs
+      - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      - db
+
+  db:
+    image: sqlite:latest
+    volumes:
+      - sqlite_data:/data
+
+volumes:
+  sqlite_data:
